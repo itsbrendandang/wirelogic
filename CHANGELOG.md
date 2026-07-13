@@ -16,6 +16,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - `wirelogic` training CLI with a `--compare` experiment for fixed versus learnable connections (`train.py`).
 - Test suite covering gate semantics, straight-through gradients, and bit-exact hardening; clean `ruff` and strict `mypy`.
 
+- GitHub Actions CI running ruff, format check, mypy, and pytest on push and pull request.
+- `scripts/plot_decision_boundary.py` and a `viz` extra to render the hardened circuit's decision regions (`docs/decision_boundary.png`).
+
 ### Measured
 
 - Yin-Yang, 224 gates, 400 epochs, seed 0: fixed connections 87.7% test, learnable connections 94.0% test; hardened circuit matches the soft model exactly in both cases.

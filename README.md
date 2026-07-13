@@ -1,8 +1,16 @@
 # wirelogic
 
+[![ci](https://github.com/itsbrendandang/wirelogic/actions/workflows/ci.yml/badge.svg)](https://github.com/itsbrendandang/wirelogic/actions/workflows/ci.yml)
+
 A compact, CPU-friendly reference implementation of **fully-trainable differentiable logic gate networks**, where the wiring between gates is learned rather than fixed.
 
 It reproduces the central mechanism of Mommen et al., ["Fully Trainable Deep Differentiable Logic Gate Networks and Lookup Table Networks"](https://arxiv.org/abs/2607.09399) (arXiv:2607.09399, July 2026), on the small Yin-Yang benchmark, and it hardens the trained network into a concrete integer-only logic circuit that runs with no floating point.
+
+![Decision regions of the hardened logic circuit on Yin-Yang](docs/decision_boundary.png)
+
+The regions above are drawn by the *hardened* circuit, not the soft model, so this is literally what the exported logic gates compute.
+The blocky, axis-aligned boundaries are the honest fingerprint of a network built from boolean gates over thermometer-encoded inputs.
+Regenerate the figure with `uv run --extra viz python scripts/plot_decision_boundary.py`.
 
 ## The idea in one paragraph
 
