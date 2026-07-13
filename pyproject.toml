@@ -1,0 +1,43 @@
+[project]
+name = "wirelogic"
+version = "0.1.0"
+description = "Fully-trainable differentiable logic gate networks with learnable connections (reference implementation of arXiv:2607.09399)."
+readme = "README.md"
+authors = [{ name = "Brendan Dang", email = "brendanmkdang@gmail.com" }]
+requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = [
+    "logic-gate-networks",
+    "differentiable-logic",
+    "sparse-networks",
+    "learnable-connections",
+    "straight-through-estimator",
+]
+dependencies = ["torch>=2.2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=1.11"]
+
+[project.scripts]
+wirelogic = "wirelogic.train:main"
+
+[build-system]
+requires = ["uv_build>=0.11.28,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "NPY"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = ["torch.*", "numpy.*"]
+ignore_missing_imports = true
